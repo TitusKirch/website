@@ -1,6 +1,18 @@
 <template>
   <div class="h-full w-full bg-gray-50 p-4">
-    <BlogPostCard />
+    <GridContainer :cols="1">
+      <GridContainer :cols="3">
+        <BlogPostCard />
+        <BlogPostCard />
+        <BlogPostCard />
+      </GridContainer>
+
+      <GridContainer :cols="1">
+        <BlogPostCard type="horizontal" />
+        <BlogPostCard type="horizontal" />
+        <BlogPostCard type="horizontal" />
+      </GridContainer>
+    </GridContainer>
   </div>
 </template>
 

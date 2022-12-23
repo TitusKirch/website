@@ -1,6 +1,16 @@
 <template>
-  <div class="overflow-hidden rounded-lg shadow-xl">
-    <PlaceholderImage height="200px" />
+  <div
+    class="flex overflow-hidden rounded-lg shadow-xl"
+    :class="{
+      'flex-col': type === 'vertical',
+      'h-64 flex-row': type === 'horizontal',
+    }"
+  >
+    <PlaceholderImage
+      :height="{ vertical: '150px', horizontal: '100%' }[type]"
+      :width="{ vertical: '100%', horizontal: '450px' }[type]"
+      class="shrink-0"
+    />
     <div class="flex flex-col gap-2 px-6 py-4">
       <span class="text-xl">Blog post</span>
 
@@ -13,3 +23,15 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+defineProps({
+  type: {
+    type: String,
+    default: "vertical",
+    validator: (value: string) => {
+      return ["vertical", "horizontal"].includes(value);
+    },
+  },
+});
+</script>
